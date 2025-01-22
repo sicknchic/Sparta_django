@@ -17,3 +17,12 @@ class Post(TimeStampModel):
 
     def __str__(self):
         return self.title
+
+
+class Comment(TimeStampModel):
+    post = models.ForeignKey(to=Post, on_delete=models.CASCADE, related_name="comments")
+    message = models.CharField(max_length=140)
+    author = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.post.title}의 댓글"

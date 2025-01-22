@@ -86,6 +86,8 @@ DATABASES = {
 # Custom User Model
 AUTH_USER_MODEL = "user.CustomUser"
 
+# login URL
+LOGIN_URL = "/user/login/"
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 

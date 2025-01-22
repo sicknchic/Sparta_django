@@ -2,5 +2,5 @@
 
 {% block content %}
     <h3>권한이 없습니다.</h3>
-    <a href="{% url 'post:post_list' %}">목록으로</a>
+    <a href="{{ post_detail_url }}">돌아가기</a>
 {% endblock content %}

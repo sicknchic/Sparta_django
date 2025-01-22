@@ -15,4 +15,24 @@
         {% csrf_token %}
         <input type="submit" value="글 삭제">
     </form>
+
+    <hr>
+    <h3>댓글 {{ comments|length }}개</h3>
+    <form action="{% url 'post:comment_create' post.pk %}" method="POST">
+        {% csrf_token %}
+        {{ comment_form.as_p}}
+        <input type="submit" value="댓글달기">
+    </form>
+
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <p>{{ comment.author }}: {{ comment.message }}<br>{{ comment.created_at }}</p>
+                <form action="{% url 'post:comment_delete' post.pk comment.pk %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="삭제">
+                </form>
+                {% endfor %}
+            </li>
+    </ul>
 {% endblock content %}
