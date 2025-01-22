@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>This is post form page</h1>
+    <form action="{% if post %}{% url 'post:post_update' post.pk %}{% else %}{% url 'post:post_create' %}{% endif %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">작성하기</button>
+    </form>
+{% endblock content %}

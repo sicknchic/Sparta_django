@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>This is update page</h1>
+    <form action="{% url 'user:update' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">정보수정</button>
+    </form>
+{% endblock content %}

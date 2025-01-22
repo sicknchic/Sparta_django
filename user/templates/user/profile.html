@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>This is user profile page</h1>
+    {% if user.image %}
+        <img src="{{ user.image.url }}" alt="profile_image" style="max-width: 200px; height: auto;">
+    {% else %}
+        <p>프로필 사진이 없습니다.</p>
+    {% endif %}
+    <ul>
+        <li>유저명 : {{ user.username }}</li>
+        <li>이름: {{ user.first_name }} + {{ user.last_name }}</li>
+        <li>이메일: {{ user.email }}</li>
+        <li>자기소개: {{ user.introduction }}</li>
+    </ul>
+{% endblock content %}
