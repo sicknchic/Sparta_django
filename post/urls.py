@@ -19,4 +19,5 @@ urlpatterns = [
     #     views.comment_update,
     #     name="comment_update",
     # ),
+    path("<int:pk>/like/", views.like, name="like"),
 ]

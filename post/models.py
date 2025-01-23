@@ -14,6 +14,9 @@ class Post(TimeStampModel):
     title = models.CharField(max_length=100)
     content = models.TextField()
     author = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    like_users = models.ManyToManyField(
+        to=settings.AUTH_USER_MODEL, related_name="like_posts"
+    )
 
     def __str__(self):
         return self.title

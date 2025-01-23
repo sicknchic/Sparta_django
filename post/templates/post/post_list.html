@@ -9,6 +9,14 @@
             <a href="{% url 'post:post_detail' post.pk %}">
                 <div>[{{ post.created_at|date:"Y-m-d" }}] {{ post.title }}</div>
             </a>
+            <form action="{% url 'post:like' post.pk %}" method="POST">
+                {% csrf_token %}
+                {% if user in post.like_users.all %}
+                    <input type="submit" value="좋아요 취소">
+                {% else %}
+                    <input type="submit" value="좋아요">
+                {% endif %}
+            </form>
         </li>
         {% endfor %}
     </ul>

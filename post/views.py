@@ -98,6 +98,19 @@ def comment_delete(request, pk, comment_pk):
     return redirect("post:post_detail", post.pk)
 
 
+def like(request, pk):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post, pk=pk)
+        if post.like_users.filter(pk=request.user.pk).exists():
+            post.like_users.remove(request.user)
+        else:
+            post.like_users.add(request.user)
+    else:
+        return redirect("user:login")
+
+    return redirect("post:post_list")
+
+
 # @login_required
 # def comment_update(request, pk, comment_pk):
 #     post = get_object_or_404(Post, pk=pk)
